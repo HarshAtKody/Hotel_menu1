@@ -221,7 +221,7 @@ class _MenuScreenState extends State<MenuScreen> with Constant{
 
        decoration: InputDecoration(
          border: InputBorder.none,
-         isDense: false,
+         isDense: true,
          prefixIcon: Image.asset(icSearch),
          contentPadding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
          hintText: "Key_Search".localized,

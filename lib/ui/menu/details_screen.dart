@@ -95,7 +95,7 @@ class _DetailsScreenState extends State<DetailsScreen> with Constant{
                               InkWell(
                                   onTap: (){
                                     setState(() {
-                                      if(itemCount > 0){
+                                      if(itemCount > 1){
                                         itemCount --;
                                       }
                                     });
@@ -107,7 +107,7 @@ class _DetailsScreenState extends State<DetailsScreen> with Constant{
                               InkWell(
                                   onTap: (){
                                     setState(() {
-                                      if(itemCount >= 0 && itemCount < 25){
+                                      if(itemCount >= 1 && itemCount < 25){
                                       itemCount ++;
                                       }
                                     });
