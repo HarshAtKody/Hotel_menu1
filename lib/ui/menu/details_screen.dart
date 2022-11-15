@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-// import 'package:flutter_model_viewer/flutter_model_viewer.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hotel_menu1/utils/const.dart';
 import 'package:hotel_menu1/utils/theme_const.dart';
@@ -156,11 +154,8 @@ class _DetailsScreenState extends State<DetailsScreen> with Constant{
                       })
                     ],
                   ),
-
-
                 ],
               ),
-
             ],
           ),
         ),

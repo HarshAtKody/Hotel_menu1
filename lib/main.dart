@@ -14,11 +14,12 @@ import 'package:hotel_menu1/utils/theme_const.dart';
 import 'package:path_provider/path_provider.dart';
 
 
+
 Future<void> main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
-  await EasyLocalization.ensureInitialized();
   await Firebase.initializeApp();
+  await EasyLocalization.ensureInitialized();
 
   final appDocumentDir = await getApplicationDocumentsDirectory();
   Hive.init(appDocumentDir.path);
