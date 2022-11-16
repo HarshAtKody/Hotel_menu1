@@ -25,7 +25,6 @@ class _DetailsScreenState extends State<DetailsScreen> with Constant{
   @override
   void initState() {
     SchedulerBinding.instance?.addPostFrameCallback((timeStamp) {
-      // modelViewController.webViewController.loadFile(widget.foodModel);
     });
     super.initState();
   }

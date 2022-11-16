@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hotel_menu1/ui/menu/details_screen.dart';
+import 'package:hotel_menu1/utils/const.dart';
 import 'package:hotel_menu1/utils/extension/string_extension.dart';
 import 'package:hotel_menu1/utils/sliderightroute.dart';
 import 'package:hotel_menu1/utils/theme_const.dart';
@@ -24,47 +25,53 @@ class _MenuScreenState extends State<MenuScreen> with Constant{
     return Scaffold(
       backgroundColor: clrWhite,
       appBar: customAppbar(),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
-        child: ListView(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SizedBox(
-                height: 30.h,
-                child: ListView.separated(
-                  separatorBuilder: (context, i){
-                    return SizedBox(width: 10.w,);
-                    },
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: nameOfFood.length,
-                    itemBuilder: (context, i){
-                  return InkWell(
-                    onTap: (){
-                     setState(() {
-                       isSelected = i;
-                     });
-                    },
-                    child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
-                      decoration: (i == isSelected)
-                          ? BoxDecoration(
-                          color: clrParrotGreen.withOpacity(0.5),
-                          borderRadius: BorderRadius.circular(20.r))
-                          : BoxDecoration(
-                          color: clrTransparent,
-                          borderRadius: BorderRadius.circular(20.r)
+      body: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: (){
+          hideKeyboard(context);
+        },
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          child: ListView(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SizedBox(
+                  height: 30.h,
+                  child: ListView.separated(
+                    separatorBuilder: (context, i){
+                      return SizedBox(width: 10.w,);
+                      },
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: nameOfFood.length,
+                      itemBuilder: (context, i){
+                    return InkWell(
+                      onTap: (){
+                       setState(() {
+                         isSelected = i;
+                       });
+                      },
+                      child: Container(
+                        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
+                        decoration: (i == isSelected)
+                            ? BoxDecoration(
+                            color: clrParrotGreen.withOpacity(0.5),
+                            borderRadius: BorderRadius.circular(20.r))
+                            : BoxDecoration(
+                            color: clrTransparent,
+                            borderRadius: BorderRadius.circular(20.r)
+                        ),
+                        child: Center(child: Text(nameOfFood[i], style: TextStyles.txtRegular11.copyWith(color:(i == isSelected) ? clrWhite: clrBaseGrey),)),
                       ),
-                      child: Center(child: Text(nameOfFood[i], style: TextStyles.txtRegular11.copyWith(color:(i == isSelected) ? clrWhite: clrBaseGrey),)),
-                    ),
-                  );
-                }),
+                    );
+                  }),
+                ),
               ),
-            ),
-            SizedBox(height: 5.h,),
-            bodyWidget(),
-          ],
+              SizedBox(height: 5.h,),
+              bodyWidget(),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: SizedBox(
