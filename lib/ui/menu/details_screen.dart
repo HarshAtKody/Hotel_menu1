@@ -25,15 +25,33 @@ class _DetailsScreenState extends State<DetailsScreen> with Constant{
   @override
   void initState() {
     SchedulerBinding.instance?.addPostFrameCallback((timeStamp) {
+
     });
     super.initState();
   }
 
+  String js = r''' 
+ const modelViewerTransform = document.querySelector("model-viewer#transform");
+ modelViewerTransform.scale = `${0.1} ${0.1} ${0.1}`;
+ modelViewerTransform.updateFraming();
+   ''';
+
   int itemCount = 1;
+
+  String html = r'''
+   <div class="controls">
+    <div>
+      Scale: X: <input id="x" value="0.1" size="3" class="number">,
+      Y: <input id="y" value="0.1" size="3" class="number">,
+      Z: <input id="z" value="0.1" size="3" class="number">
+    </div>
+    <button id="frame">Update Framing</button>
+  </div>
+  ''';
 
   @override
   Widget build(BuildContext context) {
-  
+
     return Scaffold(
       key: detailsScaffoldKey,
       backgroundColor: clrWhite,
@@ -60,9 +78,14 @@ class _DetailsScreenState extends State<DetailsScreen> with Constant{
                   rotationPerSecond: "50deg",
                   autoRotateDelay: 500,
                   cameraControls: true,
+                  // innerModelViewerHtml: html,
                   ar: true,
-                  // arPlacement: ArPlacement.wall,
-                  // arScale: ArScale.fixed,
+                  arPlacement: ArPlacement.wall,
+                  arScale: ArScale.auto,
+                  // cameraTarget: "auto",
+                  relatedJs: js,
+                  // scale: '${0.001} ${0.001} ${0.001}',
+                  disableZoom: true,
                   arModes: const ['scene-viewer', 'webxr', 'quick-look'],
                 ),
               ),

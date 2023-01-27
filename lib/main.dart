@@ -86,7 +86,7 @@ class _MyAppState extends ConsumerState<MyApp> with Constant{
   Future<void> initDynamicLinks() async {
     dynamicLinks.onLink.listen((dynamicLinkData) {
       Navigator.pushNamed(context, dynamicLinkData.link.path);
-    }).onError((error) {
+   }).onError((error) {
       showLog('onLink error');
       showLog(error.message);
     });
